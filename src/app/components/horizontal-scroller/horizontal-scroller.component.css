@@ -1,0 +1,44 @@
+.category-row {
+  margin-bottom: 2rem;
+}
+.category-header {
+  margin: 0 0 0.5rem 1rem;
+  font-size: 1.5rem;
+  font-weight: 300;
+  color: #fff;
+  background: transparent;
+  z-index: 2;
+  position: relative;
+  text-shadow: 0 2px 8px #20394c, 0 1px 0 #000;
+}
+.scroller {
+  display: flex;
+  overflow-x: auto;
+  overflow-y: hidden;
+  gap: .5rem;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none; 
+  -ms-overflow-style: none; 
+}
+.scroller::-webkit-scrollbar {
+  display: none; 
+}
+.card {
+  min-width: 180px;
+  max-width: 270px;
+  flex: 0 0 auto;
+  scroll-snap-align: start;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.card:hover {
+  cursor: pointer;
+}
+.card-img {
+  width: 230px;
+  height: 100%;
+  border-radius: 4px;
+  object-fit: cover;
+  margin-bottom: 0.5rem;
+}

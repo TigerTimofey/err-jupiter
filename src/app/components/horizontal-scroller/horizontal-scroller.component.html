@@ -1,0 +1,15 @@
+<div class="category-row" *ngIf="category?.data?.length">
+  <h2 class="category-header" *ngIf="category.header">{{ category.header }}</h2>
+  <div class="scroller">
+    <ng-container *ngFor="let item of category.data">
+      <div class="card">
+        <img
+          *ngIf="item.verticalPhotos?.[0]?.photoTypes?.[60]?.url"
+          [src]="item.verticalPhotos[0]?.photoTypes?.[60]?.url"
+          alt="{{ item.heading }}"
+          class="card-img"
+        />
+      </div>
+    </ng-container>
+  </div>
+</div>

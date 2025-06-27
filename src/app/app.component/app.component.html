@@ -1,0 +1,11 @@
+<main class="main">
+  <div>
+    <ng-container *ngFor="let category of categories">
+      <app-horizontal-scroller
+        *ngIf="category.highTimeline"
+        [category]="category">
+      </app-horizontal-scroller>
+    </ng-container>
+  </div>
+</main>
+<router-outlet />

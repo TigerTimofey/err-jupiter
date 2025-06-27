@@ -1,0 +1,7 @@
+:root {
+  --brand-bg: #20394c;
+}
+
+body {
+  background: var(--brand-bg);
+}
