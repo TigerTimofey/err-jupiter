@@ -1,4 +1,4 @@
-@import './app/brand-colors.css';
+@import './app/brand-styles/brand-colors.css';
 @import url('https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&display=swap');
 
 html, body {
