@@ -1,4 +1,4 @@
-import { Component, Input, ViewChild, ElementRef } from '@angular/core';
+import { Component, Input, ViewChild, ElementRef, AfterViewInit, ChangeDetectorRef } from '@angular/core';
 import { NgIf, NgFor } from '@angular/common';
 
 @Component({
@@ -13,6 +13,11 @@ export class HorizontalScrollerComponent {
   @ViewChild('scroller', { static: false }) scrollerRef!: ElementRef<HTMLDivElement>;
   cardWidth = 230; // fallback
 
+  canScrollLeft = false;
+  canScrollRight = false;
+
+  constructor(private cdr: ChangeDetectorRef) {}
+
   private updateCardWidth() {
     if (this.scrollerRef?.nativeElement) {
       const card = this.scrollerRef.nativeElement.querySelector('.card');
@@ -20,6 +25,30 @@ export class HorizontalScrollerComponent {
         this.cardWidth = (card as HTMLElement).offsetWidth;
       }
     }
+  }
+
+  private updateScrollArrows() {
+    const scroller = this.scrollerRef?.nativeElement;
+    if (!scroller) return;
+    this.canScrollLeft = scroller.scrollLeft > 0;
+    this.canScrollRight = scroller.scrollLeft + scroller.offsetWidth < scroller.scrollWidth - 1;
+    this.cdr.markForCheck();
+  }
+
+  ngAfterViewInit() {
+    setTimeout(() => {
+      this.updateCardWidth();
+      this.updateScrollArrows();
+      const scroller = this.scrollerRef?.nativeElement;
+      if (scroller) {
+        scroller.addEventListener('scroll', () => {
+          this.updateScrollArrows();
+        });
+        window.addEventListener('resize', () => {
+          this.updateScrollArrows();
+        });
+      }
+    });
   }
 
   scrollLeft(event: Event) {
@@ -36,6 +65,7 @@ export class HorizontalScrollerComponent {
       }
     }
     scroller.scrollTo({ left: target, behavior: 'smooth' });
+    setTimeout(() => this.updateScrollArrows(), 350);
   }
 
   scrollRight(event: Event) {
@@ -52,5 +82,6 @@ export class HorizontalScrollerComponent {
       }
     }
     scroller.scrollTo({ left: target, behavior: 'smooth' });
+    setTimeout(() => this.updateScrollArrows(), 350);
   }
 }

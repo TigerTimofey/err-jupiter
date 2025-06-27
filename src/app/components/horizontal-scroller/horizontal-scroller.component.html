@@ -2,6 +2,7 @@
   <h2 class="category-header" *ngIf="category.header">{{ category.header }}</h2>
   <div class="scroller-wrapper" style="position:relative;">
     <button
+      *ngIf="canScrollLeft"
       class="timeline-arrow timeline-arrow-left"
       type="button"
       (click)="scrollLeft($event)"
@@ -10,6 +11,7 @@
       <img src="https://jupiter.err.ee/assets/audio_arrow_left.svg" alt="Scroll left" />
     </button>
     <button
+      *ngIf="canScrollRight"
       class="timeline-arrow timeline-arrow-right"
       type="button"
       (click)="scrollRight($event)"
