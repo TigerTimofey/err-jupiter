@@ -2,9 +2,9 @@
   margin-bottom: 2rem;
 }
 .category-header {
-  margin: 0 0 0.5rem 1rem;
+  margin: 1rem;
   font-size: 1.5rem;
-  font-weight: 300;
+  font-weight: 400;
   color: #fff;
   background: transparent;
   z-index: 2;
@@ -31,6 +31,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  position: relative;
 }
 .card:hover {
   cursor: pointer;
@@ -41,4 +42,90 @@
   border-radius: 4px;
   object-fit: cover;
   margin-bottom: 0.5rem;
+}
+.card-plus-icon-wrapper {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  display: flex;
+  align-items: center;
+  z-index: 2;
+}
+.card-plus-icon {
+  width: 34px;
+  height: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.42s cubic-bezier(10.4, 0, 10.2, 1);
+  padding: 2px;
+  filter: brightness(0) invert(1);
+  transform: scaleX(-1);
+}
+.card:hover .card-plus-icon {
+  opacity: 1;
+  pointer-events: auto;
+}
+.card-plus-badge {
+  margin-left: 8px;
+  background: #20394c;
+  color: #fff;
+  padding: 6px 18px;
+  font-size: 0.95rem;
+  font-weight: 400;
+  white-space: nowrap;
+  box-shadow: 0 2px 8px rgba(32,57,76,0.15);
+  border: 2px solid #fff;
+  opacity: 0;
+  transform: translateX(10px);
+  transition: opacity 0.18s, transform 0.18s;
+  pointer-events: none;
+}
+.card-plus-icon-wrapper:hover .card-plus-badge,
+.card-plus-icon-wrapper:focus-within .card-plus-badge {
+  opacity: 0.9;
+  transform: translateX(0);
+  pointer-events: auto;
+}
+.scroller-wrapper {
+  position: relative;
+}
+
+.timeline-arrow {
+  --timeline-item-aspect-ratio: calc(16 / 9);
+  height: 48px;
+  width: 48px;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  background: linear-gradient(to right, var(--carousel-arrow-bg-grad-end, #20394c) 0%, var(--carousel-arrow-bg-grad-end, #20394c) 15%, var(--carousel-arrow-bg-grad-start, #2e4a62) 85%, var(--carousel-arrow-bg-grad-start, #2e4a62) 100%);
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  padding: 0;
+  transition: background 0.2s;
+}
+
+.timeline-arrow-left {
+  left: 0;
+  border-top-right-radius: 50%;
+  border-bottom-right-radius: 50%;
+}
+
+.timeline-arrow-right {
+  right: 0;
+  border-top-left-radius: 50%;
+  border-bottom-left-radius: 50%;
+  background: linear-gradient(to left, var(--carousel-arrow-bg-grad-end, #20394c) 0%, var(--carousel-arrow-bg-grad-end, #20394c) 15%, var(--carousel-arrow-bg-grad-start, #2e4a62) 85%, var(--carousel-arrow-bg-grad-start, #2e4a62) 100%);
+}
+
+.timeline-arrow img {
+  width: 28px;
+  height: 28px;
+  pointer-events: none;
 }

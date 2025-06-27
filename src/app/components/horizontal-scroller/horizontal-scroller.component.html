@@ -1,15 +1,41 @@
 <div class="category-row" *ngIf="category?.data?.length">
   <h2 class="category-header" *ngIf="category.header">{{ category.header }}</h2>
-  <div class="scroller">
-    <ng-container *ngFor="let item of category.data">
-      <div class="card">
-        <img
-          *ngIf="item.verticalPhotos?.[0]?.photoTypes?.[60]?.url"
-          [src]="item.verticalPhotos[0]?.photoTypes?.[60]?.url"
-          alt="{{ item.heading }}"
-          class="card-img"
-        />
-      </div>
-    </ng-container>
+  <div class="scroller-wrapper" style="position:relative;">
+    <button
+      class="timeline-arrow timeline-arrow-left"
+      type="button"
+      (click)="scrollLeft($event)"
+      (mousedown)="scrollLeft($event)"
+      (touchstart)="scrollLeft($event)">
+      <img src="https://jupiter.err.ee/assets/audio_arrow_left.svg" alt="Scroll left" />
+    </button>
+    <button
+      class="timeline-arrow timeline-arrow-right"
+      type="button"
+      (click)="scrollRight($event)"
+      (mousedown)="scrollRight($event)"
+      (touchstart)="scrollRight($event)">
+      <img src="https://jupiter.err.ee/assets/audio_arrow_right.svg" alt="Scroll right" />
+    </button>
+    <div class="scroller" #scroller>
+      <ng-container *ngFor="let item of category.data">
+        <div class="card">
+          <div class="card-plus-icon-wrapper"
+               (mouseenter)="item._hover = true"
+               (mouseleave)="item._hover = false">
+            <img class="card-plus-icon"
+                 [src]="item._hover ? '/images/add_second.svg' : '/images/add_first.svg'"
+                 alt="Add" />
+            <span class="card-plus-badge">Lisa lemmikutesse</span>
+          </div>
+          <img
+            *ngIf="item.verticalPhotos?.[0]?.photoTypes?.[60]?.url"
+            [src]="item.verticalPhotos[0]?.photoTypes?.[60]?.url"
+            alt="{{ item.heading }}"
+            class="card-img"
+          />
+        </div>
+      </ng-container>
+    </div>
   </div>
 </div>
