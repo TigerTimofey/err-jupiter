@@ -84,4 +84,16 @@ export class HorizontalScrollerComponent {
     scroller.scrollTo({ left: target, behavior: 'smooth' });
     setTimeout(() => this.updateScrollArrows(), 350);
   }
+
+  getBestPhotoUrl(item: any): string | null {
+    type PhotoType = { url?: string; w?: number; h?: number };
+    const photos: { [key: string]: PhotoType } | undefined = item.verticalPhotos?.[0]?.photoTypes;
+    if (!photos) return null;
+    if (photos[80]?.url) return photos[80].url;
+    if (photos[60]?.url) return photos[60].url;
+    const best = Object.values(photos)
+      .filter((p: PhotoType) => p?.url)
+      .sort((a: PhotoType, b: PhotoType) => ((b.w ?? 0) * (b.h ?? 0)) - ((a.w ?? 0) * (a.h ?? 0)))[0];
+    return best?.url || null;
+  }
 }

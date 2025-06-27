@@ -31,8 +31,8 @@
             <span class="card-plus-badge">Lisa lemmikutesse</span>
           </div>
           <img
-            *ngIf="item.verticalPhotos?.[0]?.photoTypes?.[60]?.url"
-            [src]="item.verticalPhotos[0]?.photoTypes?.[60]?.url"
+            *ngIf="getBestPhotoUrl(item)"
+            [src]="getBestPhotoUrl(item)"
             alt="{{ item.heading }}"
             class="card-img"
           />
