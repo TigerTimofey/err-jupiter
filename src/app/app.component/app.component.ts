@@ -3,6 +3,7 @@ import { RouterOutlet } from '@angular/router';
 import { NgFor, NgIf } from '@angular/common';
 import { DataService } from '../data.service';
 import { HorizontalScrollerComponent } from '../components/horizontal-scroller/horizontal-scroller.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -14,7 +15,7 @@ export class AppComponent implements OnInit {
   title = 'jupiter-frontpage';
   categories: any[] = [];
 
-  constructor(private dataService: DataService) {}
+  constructor(private dataService: DataService, public router: Router) {}
 
   ngOnInit() {
     this.dataService.fetchFrontPageData().subscribe(result => {

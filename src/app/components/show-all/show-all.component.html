@@ -1,0 +1,19 @@
+<div class="show-all-header">
+  <button class="back-btn" (click)="goBack()">
+    <img src="/images/right.svg" class="back-arrow" alt="Back" />
+  </button>
+  <h2 class="show-all-title">{{ category?.header }}</h2>
+</div>
+<div class="show-all-grid">
+  <ng-container *ngFor="let item of category?.data">
+    <div class="show-all-card">
+      <img
+        *ngIf="getBestPhotoUrl(item)"
+        [src]="getBestPhotoUrl(item)"
+        alt="{{ item.heading }}"
+        class="show-all-card-img"
+      />
+      <div class="show-all-card-title">{{ item.heading }}</div>
+    </div>
+  </ng-container>
+</div>

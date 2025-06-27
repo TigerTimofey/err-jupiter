@@ -1,10 +1,11 @@
 import { Component, Input, ViewChild, ElementRef, AfterViewInit, ChangeDetectorRef } from '@angular/core';
 import { NgIf, NgFor } from '@angular/common';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-horizontal-scroller',
   standalone: true,
-  imports: [NgIf, NgFor],
+  imports: [NgIf, NgFor, RouterModule],
   templateUrl: './horizontal-scroller.component.html',
   styleUrls: ['./horizontal-scroller.component.css']
 })

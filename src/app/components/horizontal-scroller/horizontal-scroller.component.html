@@ -1,7 +1,9 @@
 <div class="category-row" *ngIf="category?.data?.length">
   <div class="category-header-row">
     <h2 class="category-header" *ngIf="category.header">{{ category.header }}</h2>
-    <a class="view-more-link" href="#">
+    <a class="view-more-link"
+       [routerLink]="['/show-all']"
+       [state]="{ category: category }">
       <img src="/images/right.svg" alt="chevron right" class="view-more-icon" />
       <span class="view-more-text">Vaata kõiki</span>
     </a>
