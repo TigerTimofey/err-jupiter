@@ -7,6 +7,14 @@
 <div class="show-all-grid">
   <ng-container *ngFor="let item of category?.data">
     <div class="show-all-card">
+      <div class="card-plus-icon-wrapper"
+           (mouseenter)="item._hover = true"
+           (mouseleave)="item._hover = false">
+        <img class="card-plus-icon"
+             [src]="item._hover ? '/images/add_second.svg' : '/images/add_first.svg'"
+             alt="Add" />
+        <span class="card-plus-badge">Lisa lemmikutesse</span>
+      </div>
       <img
         *ngIf="getBestPhotoUrl(item)"
         [src]="getBestPhotoUrl(item)"

@@ -24,9 +24,9 @@
 }
 .show-all-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-  gap: 1.5rem;
-  padding: 1rem 2rem;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 2rem;
+  padding: 2rem 4rem;
 }
 .show-all-card {
   background: #22384a;
@@ -36,16 +36,67 @@
   flex-direction: column;
   align-items: center;
   box-shadow: 0 2px 8px rgba(32,57,76,0.15);
+  position: relative;
+  max-width: 340px;
+  min-width: 220px;
+}
+
+.card-plus-icon-wrapper {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  display: flex;
+  align-items: center;
+  z-index: 2;
+}
+.card-plus-icon {
+  width: 34px;
+  height: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.42s cubic-bezier(10.4, 0, 10.2, 1);
+  padding: 2px;
+  filter: brightness(0) invert(1);
+  transform: scaleX(-1);
+}
+.show-all-card:hover .card-plus-icon {
+  opacity: 1;
+  pointer-events: auto;
+}
+.card-plus-badge {
+  margin-left: 8px;
+  background: var(--brand-card-plus-badge-bg);
+  color: var(--brand-card-plus-badge-text);
+  padding: 6px 18px;
+  font-size: 0.95rem;
+  font-weight: 400;
+  white-space: nowrap;
+  box-shadow: 0 2px 8px rgba(32,57,76,0.15);
+  border: 2px solid var(--brand-card-plus-badge-border);
+  opacity: 0;
+  transform: translateX(10px);
+  transition: opacity 0.18s, transform 0.18s;
+  pointer-events: none;
+}
+.card-plus-icon-wrapper:hover .card-plus-badge,
+.card-plus-icon-wrapper:focus-within .card-plus-badge {
+  opacity: 0.9;
+  transform: translateX(0);
+  pointer-events: auto;
 }
 .show-all-card-img {
   width: 100%;
+  min-height: 320px;
   aspect-ratio: 2/3;
   object-fit: cover;
   border-radius: 8px 8px 0 0;
 }
 .show-all-card-title {
   color: #fff;
-  font-size: 1rem;
+  font-size: 1.15rem;
   font-weight: 400;
   padding: 0.75rem 0.5rem;
   text-align: center;
