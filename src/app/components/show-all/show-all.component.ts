@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { NgFor, NgIf } from '@angular/common';
+import { getFavourites, saveFavourites } from '../../utils/favourites.util';
 
 @Component({
   selector: 'app-show-all',
@@ -17,6 +18,14 @@ export class ShowAllComponent {
     this.category = nav?.extras?.state?.['category'];
     // Scroll to top on navigation
     window.scrollTo({ top: 0, behavior: 'auto' });
+
+    // Mark items as favourite based on localStorage
+    const favs = getFavourites();
+    if (this.category?.data) {
+      for (const item of this.category.data) {
+        item._favourite = favs.has(item.canonicalUrl);
+      }
+    }
   }
 
   goBack() {
@@ -36,5 +45,12 @@ export class ShowAllComponent {
 
   toggleFavourite(item: any) {
     item._favourite = !item._favourite;
+    const favs = getFavourites();
+    if (item._favourite) {
+      favs.add(item.canonicalUrl);
+    } else {
+      favs.delete(item.canonicalUrl);
+    }
+    saveFavourites(favs);
   }
 }

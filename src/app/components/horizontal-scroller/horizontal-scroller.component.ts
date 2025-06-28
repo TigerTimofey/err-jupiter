@@ -1,6 +1,7 @@
-import { Component, Input, ViewChild, ElementRef, AfterViewInit, ChangeDetectorRef } from '@angular/core';
+import { Component, Input, ViewChild, ElementRef, AfterViewInit, ChangeDetectorRef, OnInit } from '@angular/core';
 import { NgIf, NgFor } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { getFavourites, saveFavourites } from '../../utils/favourites.util';
 
 @Component({
   selector: 'app-horizontal-scroller',
@@ -9,7 +10,7 @@ import { RouterModule } from '@angular/router';
   templateUrl: './horizontal-scroller.component.html',
   styleUrls: ['./horizontal-scroller.component.css']
 })
-export class HorizontalScrollerComponent {
+export class HorizontalScrollerComponent implements OnInit {
   @Input() category: any;
   @ViewChild('scroller', { static: false }) scrollerRef!: ElementRef<HTMLDivElement>;
   cardWidth = 230; // fallback
@@ -50,6 +51,16 @@ export class HorizontalScrollerComponent {
         });
       }
     });
+  }
+
+  ngOnInit() {
+    // Mark items as favourite based on localStorage
+    const favs = getFavourites();
+    if (this.category?.data) {
+      for (const item of this.category.data) {
+        item._favourite = favs.has(item.canonicalUrl);
+      }
+    }
   }
 
   scrollLeft(event: Event) {
@@ -100,5 +111,12 @@ export class HorizontalScrollerComponent {
 
   toggleFavourite(item: any) {
     item._favourite = !item._favourite;
+    const favs = getFavourites();
+    if (item._favourite) {
+      favs.add(item.canonicalUrl);
+    } else {
+      favs.delete(item.canonicalUrl);
+    }
+    saveFavourites(favs);
   }
 }
