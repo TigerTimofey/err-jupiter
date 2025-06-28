@@ -1,5 +1,6 @@
 <router-outlet />
-<main class="main" *ngIf="!router.url.startsWith('/show-all')">
+<app-loading-error [loading]="loading" [error]="error"></app-loading-error>
+<main class="main" *ngIf="!router.url.startsWith('/show-all') && !loading && !error">
   <div>
     <ng-container *ngFor="let category of categories">
       <app-horizontal-scroller
