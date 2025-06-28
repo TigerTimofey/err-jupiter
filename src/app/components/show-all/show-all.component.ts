@@ -56,5 +56,12 @@ export class ShowAllComponent {
       favs.delete(item.canonicalUrl);
     }
     saveFavourites(favs);
+
+    if (window.innerWidth <= 960) {
+      item._showBadge = true;
+      setTimeout(() => {
+        item._showBadge = false;
+      }, 1000);
+    }
   }
 }

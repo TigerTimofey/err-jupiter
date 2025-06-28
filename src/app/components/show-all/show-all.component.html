@@ -28,7 +28,9 @@
             [src]="item._favourite ? '/images/favorite.svg' : (item._hover ? '/images/add_second.svg' : '/images/add_first.svg')"
             [alt]="item._favourite ? 'Eemalda lemmikutest' : 'Lisa lemmikutesse'"
           />
-          <span class="card-plus-badge">
+          <span class="card-plus-badge"
+            *ngIf="item._hover || item._showBadge"
+          >
             {{ item._favourite ? 'Eemalda lemmikutest' : 'Lisa lemmikutesse' }}
           </span>
         </div>
