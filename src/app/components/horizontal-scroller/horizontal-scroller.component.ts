@@ -13,7 +13,7 @@ import { getFavourites, saveFavourites } from '../../utils/favourites.util';
 export class HorizontalScrollerComponent implements OnInit {
   @Input() category: any;
   @ViewChild('scroller', { static: false }) scrollerRef!: ElementRef<HTMLDivElement>;
-  cardWidth = 230; // fallback
+  cardWidth = 230;
 
   canScrollLeft = false;
   canScrollRight = false;
@@ -54,7 +54,6 @@ export class HorizontalScrollerComponent implements OnInit {
   }
 
   ngOnInit() {
-    // Mark items as favourite based on localStorage
     const favs = getFavourites();
     if (this.category?.data) {
       for (const item of this.category.data) {
@@ -118,5 +117,11 @@ export class HorizontalScrollerComponent implements OnInit {
       favs.delete(item.canonicalUrl);
     }
     saveFavourites(favs);
+  }
+
+  get categorySlug(): string {
+    return (this.category?.header || '')
+      .toLowerCase()
+      .replace(/ /g, '-');
   }
 }

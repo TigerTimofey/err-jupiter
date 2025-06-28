@@ -2,7 +2,7 @@
   <div class="category-header-row">
     <h2 class="category-header" *ngIf="category.header">{{ category.header }}</h2>
     <a class="view-more-link"
-       [routerLink]="['/show-all']"
+       [routerLink]="['/', categorySlug]"
        [state]="{ category: category }"
        aria-label="Vaata kõiki"
        title="Vaata kõiki">

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { NgFor, NgIf } from '@angular/common';
 import { getFavourites, saveFavourites } from '../../utils/favourites.util';
 
@@ -13,13 +13,17 @@ import { getFavourites, saveFavourites } from '../../utils/favourites.util';
 export class ShowAllComponent {
   category: any;
 
-  constructor(private router: Router) {
+  constructor(private router: Router, private route: ActivatedRoute) {
     const nav = this.router.getCurrentNavigation();
     this.category = nav?.extras?.state?.['category'];
-    // Scroll to top on navigation
+    if (!this.category) {
+      const categoryName = this.route.snapshot.paramMap.get('categoryName');
+      const header = (categoryName || '')
+        .replace(/-/g, ' ')
+        .replace(/\b\w/g, c => c.toUpperCase());
+    }
     window.scrollTo({ top: 0, behavior: 'auto' });
 
-    // Mark items as favourite based on localStorage
     const favs = getFavourites();
     if (this.category?.data) {
       for (const item of this.category.data) {
