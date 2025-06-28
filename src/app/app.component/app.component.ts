@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { NgFor, NgIf } from '@angular/common';
-import { DataService } from '../data.service';
+import { DataService } from '../services/data.service';
 import { HorizontalScrollerComponent } from '../components/horizontal-scroller/horizontal-scroller.component';
 import { LoadingErrorComponent } from '../components/loading-error/loading-error.component';
 import { Router } from '@angular/router';
