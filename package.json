@@ -2,7 +2,6 @@
   "name": "jupiter-frontpage",
   "version": "0.0.0",
   "scripts": {
-    "ng": "ng",
     "generate-env": "node scripts/generate-env.js",
     "start": "npm run generate-env && ng serve",
     "build": "npm run generate-env && ng build",
@@ -37,3 +36,4 @@
     "typescript": "~5.7.2"
   }
 }
+

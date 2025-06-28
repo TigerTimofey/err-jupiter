@@ -1,14 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 const dotenvPath = path.resolve(__dirname, '../.env');
-let apiUrl = '';
-
-if (fs.existsSync(dotenvPath)) {
-  require('dotenv').config({ path: dotenvPath });
-  apiUrl = process.env.API_URL || '';
-} else {
-  console.warn('.env file not found. apiUrl will be empty.');
-}
+let apiUrl = process.env.API_URL || '';
 
 const envDir = path.resolve(__dirname, '../src/environments');
 const envFilePath = path.join(envDir, 'environment.ts');
@@ -20,6 +13,13 @@ export const environment = {
 };
 `;
 
+fs.mkdirSync(envDir, { recursive: true });
+fs.writeFileSync(envFilePath, fileContent);
+console.log(`Generated ${envFilePath}`);
+fs.writeFileSync(
+  path.resolve(__dirname, '../src/environments/environment.prod.ts'),
+  fileContent
+);
 fs.mkdirSync(envDir, { recursive: true });
 fs.writeFileSync(envFilePath, fileContent);
 console.log(`Generated ${envFilePath}`);
