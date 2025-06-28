@@ -25,5 +25,5 @@ fs.writeFileSync(envFilePath, fileContent);
 console.log(`Generated ${envFilePath}`);
 fs.writeFileSync(
   path.resolve(__dirname, '../src/environments/environment.prod.ts'),
-  envFileContent
+  fileContent
 );
