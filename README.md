@@ -1,59 +1,71 @@
-# JupiterFrontpage
+# Jupiter Frontpage
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.0.
+**Jupiter** is the Estonian Public Broadcasting (ERR) frontpage, built with Angular.  
+It features a modern, responsive UI, category-based content, and persistent local caching for offline support.
 
-## Development server
 
-To start a local development server, run:
+
+## ✨ Features
+
+- **Main Banner** for featured content
+- **Category-based horizontal scrollers**
+- **Show All** view for each category
+- **Favourites** support (add/remove, persisted in browser)
+- **Responsive design** with custom brand styles
+- **Offline fallback**: loads cached data if API is unavailable
+- **Accessible** and keyboard-friendly
+
+
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+- [Node.js](https://nodejs.org/) (v18+ recommended)
+- [npm](https://www.npmjs.com/) (v9+ recommended)
+
+### Installation
+
+```bash
+npm install
+```
+
+### Development Server
 
 ```bash
 ng serve
 ```
+Visit [http://localhost:4200](http://localhost:4200) in your browser.
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
-
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+### Production Build
 
 ```bash
-ng generate component component-name
+npm run build
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
 
-```bash
-ng generate --help
-```
+## 📦 License
 
-## Building
+- Fonts: [Montserrat](https://github.com/JulietaUla/Montserrat.git) under [SIL Open Font License](public/fonts/Montserrat,Passion_One/Montserrat/OFL.txt)
+- Source code: MIT
 
-To build the project run:
 
-```bash
-ng build
-```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
 
-## Running unit tests
+## 🎨 Styling
 
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+- All colors are defined in `/src/app/brand-styles/brand-colors.css`
+- Uses [Inter Tight](https://fonts.google.com/specimen/Inter+Tight) from Google Fonts
+- Responsive layouts with CSS Grid and Flexbox
 
-```bash
-ng test
-```
 
-## Running end-to-end tests
+## 📦 License
 
-For end-to-end (e2e) testing, run:
+- Fonts: [Montserrat](https://github.com/JulietaUla/Montserrat.git) under [SIL Open Font License](public/fonts/Montserrat,Passion_One/Montserrat/OFL.txt)
+- Source code: MIT
 
-```bash
-ng e2e
-```
+---
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+## 👤 Author
 
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+[Timofey Babisashvili](https://www.linkedin.com/in/timofey-tech/)

@@ -9,14 +9,13 @@ interface PhotoType {
 }
 
 @Component({
-  selector: 'app-hero',
+  selector: 'app-main-banner',
   standalone: true,
   imports: [NgIf],
-  templateUrl: './hero.component.html',
-  styleUrls: ['./hero.component.css']
+  templateUrl: './main-banner.component.html',
+  styleUrls: ['./main-banner.component.css']
 })
-
-export class HeroComponent {
+export class MainBannerComponent {
   @Input() item: any;
 
   getBestPhotoUrl(): string | null {

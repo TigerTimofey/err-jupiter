@@ -5,11 +5,11 @@ import { DataService } from '../data.service';
 import { HorizontalScrollerComponent } from '../components/horizontal-scroller/horizontal-scroller.component';
 import { LoadingErrorComponent } from '../components/loading-error/loading-error.component';
 import { Router } from '@angular/router';
-import { HeroComponent } from '../components/hero/hero.component';
+import { MainBannerComponent } from '../components/main-banner/main-banner.component';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, NgFor, NgIf, HorizontalScrollerComponent, LoadingErrorComponent, HeroComponent],
+  imports: [RouterOutlet, NgFor, NgIf, HorizontalScrollerComponent, LoadingErrorComponent, MainBannerComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
