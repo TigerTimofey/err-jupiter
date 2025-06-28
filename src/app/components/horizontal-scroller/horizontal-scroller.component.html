@@ -3,7 +3,9 @@
     <h2 class="category-header" *ngIf="category.header">{{ category.header }}</h2>
     <a class="view-more-link"
        [routerLink]="['/show-all']"
-       [state]="{ category: category }">
+       [state]="{ category: category }"
+       aria-label="Vaata kõiki"
+       title="Vaata kõiki">
       <img src="/images/right.svg" alt="chevron right" class="view-more-icon" />
       <span class="view-more-text">Vaata kõiki</span>
     </a>
@@ -15,7 +17,10 @@
       type="button"
       (click)="scrollLeft($event)"
       (mousedown)="scrollLeft($event)"
-      (touchstart)="scrollLeft($event)">
+      (touchstart)="scrollLeft($event)"
+      aria-label="Kerige vasakule"
+      title="Kerige vasakule"
+    >
       <img src="https://jupiter.err.ee/assets/audio_arrow_left.svg" alt="Scroll left" />
     </button>
     <button
@@ -24,20 +29,36 @@
       type="button"
       (click)="scrollRight($event)"
       (mousedown)="scrollRight($event)"
-      (touchstart)="scrollRight($event)">
+      (touchstart)="scrollRight($event)"
+      aria-label="Kerige paremale"
+      title="Kerige paremale"
+    >
       <img src="https://jupiter.err.ee/assets/audio_arrow_right.svg" alt="Scroll right" />
     </button>
     <div class="scroller" #scroller>
       <ng-container *ngFor="let item of category.data">
-        <a class="card-link" [href]="item.canonicalUrl">
+        <a
+          class="card-link"
+          [href]="item.canonicalUrl"
+          [attr.aria-label]="item.heading"
+          [attr.title]="item.heading"
+        >
           <div class="card">
-            <div class="card-plus-icon-wrapper"
-                 (mouseenter)="item._hover = true"
-                 (mouseleave)="item._hover = false"
-                 (click)="toggleFavourite(item); $event.preventDefault(); $event.stopPropagation();">
-              <img class="card-plus-icon"
-                   [src]="item._favourite ? '/images/favorite.svg' : (item._hover ? '/images/add_second.svg' : '/images/add_first.svg')"
-                   alt="Add" />
+            <div
+              class="card-plus-icon-wrapper"
+              (mouseenter)="item._hover = true"
+              (mouseleave)="item._hover = false"
+              (click)="toggleFavourite(item); $event.preventDefault(); $event.stopPropagation();"
+              [attr.aria-label]="item._favourite ? 'Eemalda lemmikutest' : 'Lisa lemmikutesse'"
+              [attr.title]="item._favourite ? 'Eemalda lemmikutest' : 'Lisa lemmikutesse'"
+              role="button"
+              tabindex="0"
+            >
+              <img
+                class="card-plus-icon"
+                [src]="item._favourite ? '/images/favorite.svg' : (item._hover ? '/images/add_second.svg' : '/images/add_first.svg')"
+                [alt]="item._favourite ? 'Eemalda lemmikutest' : 'Lisa lemmikutesse'"
+              />
               <span class="card-plus-badge">
                 {{ item._favourite ? 'Eemalda lemmikutest' : 'Lisa lemmikutesse' }}
               </span>
@@ -45,7 +66,7 @@
             <img
               *ngIf="getBestPhotoUrl(item)"
               [src]="getBestPhotoUrl(item)"
-              alt="{{ item.heading }}"
+              [alt]="item.heading"
               class="card-img"
             />
           </div>

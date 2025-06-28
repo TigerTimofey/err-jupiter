@@ -1,20 +1,33 @@
 <div class="show-all-header">
-  <button class="back-btn" (click)="goBack()">
+  <button class="back-btn" (click)="goBack()" aria-label="Tagasi avalehele" title="Tagasi avalehele">
     <img src="/images/right.svg" class="back-arrow" alt="Back" />
   </button>
   <h2 class="show-all-title">{{ category?.header }}</h2>
 </div>
 <div class="show-all-grid">
   <ng-container *ngFor="let item of category?.data">
-    <a class="show-all-card-link" [href]="item.canonicalUrl">
+    <a
+      class="show-all-card-link"
+      [href]="item.canonicalUrl"
+      [attr.aria-label]="item.heading"
+      [attr.title]="item.heading"
+    >
       <div class="show-all-card">
-        <div class="card-plus-icon-wrapper"
-             (mouseenter)="item._hover = true"
-             (mouseleave)="item._hover = false"
-             (click)="toggleFavourite(item); $event.preventDefault(); $event.stopPropagation();">
-          <img class="card-plus-icon"
-               [src]="item._favourite ? '/images/favorite.svg' : (item._hover ? '/images/add_second.svg' : '/images/add_first.svg')"
-               alt="Add" />
+        <div
+          class="card-plus-icon-wrapper"
+          (mouseenter)="item._hover = true"
+          (mouseleave)="item._hover = false"
+          (click)="toggleFavourite(item); $event.preventDefault(); $event.stopPropagation();"
+          [attr.aria-label]="item._favourite ? 'Eemalda lemmikutest' : 'Lisa lemmikutesse'"
+          [attr.title]="item._favourite ? 'Eemalda lemmikutest' : 'Lisa lemmikutesse'"
+          role="button"
+          tabindex="0"
+        >
+          <img
+            class="card-plus-icon"
+            [src]="item._favourite ? '/images/favorite.svg' : (item._hover ? '/images/add_second.svg' : '/images/add_first.svg')"
+            [alt]="item._favourite ? 'Eemalda lemmikutest' : 'Lisa lemmikutesse'"
+          />
           <span class="card-plus-badge">
             {{ item._favourite ? 'Eemalda lemmikutest' : 'Lisa lemmikutesse' }}
           </span>
@@ -22,7 +35,7 @@
         <img
           *ngIf="getBestPhotoUrl(item)"
           [src]="getBestPhotoUrl(item)"
-          alt="{{ item.heading }}"
+          [alt]="item.heading"
           class="show-all-card-img"
         />
         <div class="show-all-card-title">{{ item.heading }}</div>
