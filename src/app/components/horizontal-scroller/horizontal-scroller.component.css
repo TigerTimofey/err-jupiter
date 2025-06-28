@@ -83,6 +83,7 @@
   flex-direction: column;
   align-items: center;
   position: relative;
+  transition: min-width 0.5s cubic-bezier(0.4,0,0.2,1), max-width 0.5s cubic-bezier(0.4,0,0.2,1);
 }
 .card:hover {
   cursor: pointer;
@@ -93,6 +94,7 @@
   border-radius: 4px;
   object-fit: cover;
   margin-bottom: 0.5rem;
+  transition: width 0.5s cubic-bezier(0.4,0,0.2,1), min-height 0.5s cubic-bezier(0.4,0,0.2,1), font-size 0.5s cubic-bezier(0.4,0,0.2,1);
 }
 .card-plus-icon-wrapper {
   position: absolute;
@@ -191,4 +193,16 @@
   width: 28px;
   height: 28px;
   pointer-events: none;
+}
+
+@media (max-width: 960px) {
+  .card {
+    min-width: 240px;
+    max-width: 340px;
+  }
+  .card-img {
+    width: 300px;
+    min-height: 400px;
+    font-size: 1.15rem;
+  }
 }
