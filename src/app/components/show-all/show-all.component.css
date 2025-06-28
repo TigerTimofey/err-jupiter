@@ -101,6 +101,12 @@
   padding: 0.75rem 0.5rem;
   text-align: center;
 }
+.show-all-card-link {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  height: 100%;
+}
 
 @media (max-width: 960px) {
   .show-all-grid {

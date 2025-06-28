@@ -6,22 +6,24 @@
 </div>
 <div class="show-all-grid">
   <ng-container *ngFor="let item of category?.data">
-    <div class="show-all-card">
-      <div class="card-plus-icon-wrapper"
-           (mouseenter)="item._hover = true"
-           (mouseleave)="item._hover = false">
-        <img class="card-plus-icon"
-             [src]="item._hover ? '/images/add_second.svg' : '/images/add_first.svg'"
-             alt="Add" />
-        <span class="card-plus-badge">Lisa lemmikutesse</span>
+    <a class="show-all-card-link" [href]="item.canonicalUrl">
+      <div class="show-all-card">
+        <div class="card-plus-icon-wrapper"
+             (mouseenter)="item._hover = true"
+             (mouseleave)="item._hover = false">
+          <img class="card-plus-icon"
+               [src]="item._hover ? '/images/add_second.svg' : '/images/add_first.svg'"
+               alt="Add" />
+          <span class="card-plus-badge">Lisa lemmikutesse</span>
+        </div>
+        <img
+          *ngIf="getBestPhotoUrl(item)"
+          [src]="getBestPhotoUrl(item)"
+          alt="{{ item.heading }}"
+          class="show-all-card-img"
+        />
+        <div class="show-all-card-title">{{ item.heading }}</div>
       </div>
-      <img
-        *ngIf="getBestPhotoUrl(item)"
-        [src]="getBestPhotoUrl(item)"
-        alt="{{ item.heading }}"
-        class="show-all-card-img"
-      />
-      <div class="show-all-card-title">{{ item.heading }}</div>
-    </div>
+    </a>
   </ng-container>
 </div>
