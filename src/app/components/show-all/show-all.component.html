@@ -10,11 +10,14 @@
       <div class="show-all-card">
         <div class="card-plus-icon-wrapper"
              (mouseenter)="item._hover = true"
-             (mouseleave)="item._hover = false">
+             (mouseleave)="item._hover = false"
+             (click)="toggleFavourite(item); $event.preventDefault(); $event.stopPropagation();">
           <img class="card-plus-icon"
-               [src]="item._hover ? '/images/add_second.svg' : '/images/add_first.svg'"
+               [src]="item._favourite ? '/images/favorite.svg' : (item._hover ? '/images/add_second.svg' : '/images/add_first.svg')"
                alt="Add" />
-          <span class="card-plus-badge">Lisa lemmikutesse</span>
+          <span class="card-plus-badge">
+            {{ item._favourite ? 'Eemalda lemmikutest' : 'Lisa lemmikutesse' }}
+          </span>
         </div>
         <img
           *ngIf="getBestPhotoUrl(item)"

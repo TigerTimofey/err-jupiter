@@ -97,4 +97,8 @@ export class HorizontalScrollerComponent {
       .sort((a: PhotoType, b: PhotoType) => ((b.w ?? 0) * (b.h ?? 0)) - ((a.w ?? 0) * (a.h ?? 0)))[0];
     return best?.url || null;
   }
+
+  toggleFavourite(item: any) {
+    item._favourite = !item._favourite;
+  }
 }

@@ -48,6 +48,7 @@
   display: flex;
   align-items: center;
   z-index: 2;
+  cursor: pointer;
 }
 .card-plus-icon {
   width: 34px;

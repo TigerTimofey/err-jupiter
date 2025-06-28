@@ -103,10 +103,11 @@
   display: flex;
   align-items: center;
   z-index: 2;
+  cursor: pointer;
 }
 .card-plus-icon {
-  width: 34px;
-  height: 34px;
+  width: 22px;
+  height: 22px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -117,7 +118,8 @@
   filter: brightness(0) invert(1);
   transform: scaleX(-1);
 }
-.card:hover .card-plus-icon {
+.card:hover .card-plus-icon,
+.card .card-plus-icon[src*="favorite.svg"] {
   opacity: 1;
   pointer-events: auto;
 }
