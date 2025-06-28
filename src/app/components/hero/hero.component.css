@@ -2,7 +2,7 @@
   position: relative;
   width: 100vw;
   min-height: 340px;
-  background: #22384a;
+  background: var(--brand-bg);
   border-radius: 0;
   overflow: hidden;
   margin-bottom: 2.5rem;
@@ -41,8 +41,8 @@ padding: 0 0 0 2rem;
 .banner-link {
   position: relative;
   z-index: 3;
-  background: var( --brand-bg);
-  color: var(--brand-header, #fff);
+  background: var(--brand-bg);
+  color: var(--brand-header);
   font-weight: 600;
   padding: .7em 1.2em .7em 1.2em;
   margin-bottom: 1.2rem;
@@ -71,22 +71,22 @@ padding: 0 0 0 2rem;
 
 .banner-link-text {
   display: inline-block;
-  color: var(--brand-header, #fff);
+  color: var(--brand-header);
 }
 .banner h2 {
   position: relative;
   z-index: 3;
-  color: #fff;
+  color: var(--brand-header);
   font-size: 2.2rem;
   font-weight: 100;
   margin: 0 0 0.7rem 0;
-  text-shadow: 0 2px 8px #20394c, 0 1px 0 #000;
+  text-shadow: 0 2px 8px var(--brand-header-shadow1), 0 1px 0 var(--brand-header-shadow2);
   padding: 0 0 0 2rem;
 }
 .banner-lead {
   position: relative;
   z-index: 3;
-  color: #fff;
+  color: var(--brand-header);
   font-size: calc(16px + 10 * (100vw - 600px) / 3840);
   line-height: calc(22px + 20 * (100vw - 600px) / 3840);
   letter-spacing: .02em;
@@ -99,7 +99,7 @@ padding: 0 0 0 2rem;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: normal;
-  text-shadow: 0 2px 8px #20394c, 0 1px 10px #000;
+  text-shadow: 0 2px 8px var(--brand-header-shadow1), 0 1px 10px var(--brand-header-shadow2);
 }
 @media (max-width: 960px) {
   .banner {

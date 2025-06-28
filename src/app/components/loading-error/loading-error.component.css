@@ -4,14 +4,14 @@
   justify-content: center;
   min-height: 180px;
   font-size: 1.2rem;
-  color: #fff;
+  color: var(--brand-header);
 }
 
 .spinner {
   width: 32px;
   height: 32px;
-  border: 4px solid #fff;
-  border-top: 4px solid #20394c;
+  border: 4px solid var(--brand-header);
+  border-top: 4px solid var(--brand-bg);
   border-radius: 50%;
   animation: spin 1s linear infinite;
   margin-right: 1rem;
