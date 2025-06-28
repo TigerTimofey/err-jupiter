@@ -3,7 +3,13 @@
 **Jupiter** is the Estonian Public Broadcasting (ERR) frontpage, built with Angular.  
 It features a modern, responsive UI, category-based content, and persistent local caching for offline support.
 
+# Demo
 
+https://err-jupiter-2ugb.vercel.app
+
+# Video
+
+https://github.com/user-attachments/assets/48cbacfa-ce91-454d-92f4-9205baf426b0
 
 ## ✨ Features
 
