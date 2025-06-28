@@ -2,6 +2,7 @@
 <app-loading-error [loading]="loading" [error]="error"></app-loading-error>
 <main class="main" *ngIf="!router.url.startsWith('/show-all') && !loading && !error">
   <div>
+    <app-hero *ngIf="heroItem" [item]="heroItem"></app-hero>
     <ng-container *ngFor="let category of categories">
       <app-horizontal-scroller
         *ngIf="category.highTimeline"

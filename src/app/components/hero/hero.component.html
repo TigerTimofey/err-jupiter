@@ -1,0 +1,24 @@
+<div class="banner" *ngIf="item">
+  <div class="picture-gradient"></div>
+  <img
+    *ngIf="getBestPhotoUrl()"
+    [src]="getBestPhotoUrl()"
+    [alt]="item.heading"
+    class="banner-img"
+    sizes="100vw"
+    decoding="async"
+  />
+  <div class="banner-link-wrapper">
+    <a
+      class="banner-link"
+      tabindex="0"
+      [href]="item.canonicalUrl"
+      [attr.type]="item.type"
+    >
+      <img src="/images/play.svg" alt="Play" class="banner-link-icon" />
+      <span class="banner-link-text">Vaata</span>
+    </a>
+  </div>
+  <h2>{{ item.heading }}</h2>
+  <div class="banner-lead" [innerHTML]="item.lead"></div>
+</div>
